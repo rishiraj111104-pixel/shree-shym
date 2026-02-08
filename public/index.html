@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shree Shyam Saree Center</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Cormorant+Garamond:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+    <div class="header-top">
+      <div class="container">
+        <div class="logo">
+          <span class="logo-icon">✿</span>
+          <span class="logo-text">Shree Shyam Saree Center</span>
+        </div>
+        <nav class="nav">
+          <a href="#home" class="nav-link active">Home</a>
+          <a href="#lehengas" class="nav-link">Lehengas</a>
+          <a href="#dupattas" class="nav-link">Dupattas</a>
+          <a href="#jewellery" class="nav-link">Jewellery</a>
+          <button class="cart-btn" id="cartBtn">
+            <span>🛍️</span>
+            <span class="cart-count" id="cartCount">0</span>
+          </button>
+          <a href="#admin" class="admin-link">Admin</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main id="mainContent">
+    <section id="home" class="page active">
+      <div class="hero">
+        <div class="hero-pattern"></div>
+        <div class="container">
+          <div class="hero-content">
+            <h1 class="hero-title">Elegance in Every Thread</h1>
+            <p class="hero-subtitle">Discover the timeless beauty of traditional Indian attire</p>
+            <button class="btn-primary" onclick="scrollToProducts()">Explore Collection</button>
+          </div>
+        </div>
+      </div>
+
+      <section class="featured-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Featured Collection</h2>
+            <div class="title-decoration">
+              <span class="decoration-line"></span>
+              <span class="decoration-flower">❋</span>
+              <span class="decoration-line"></span>
+            </div>
+          </div>
+          <div class="products-grid" id="featuredProducts"></div>
+        </div>
+      </section>
+
+      <section class="categories-section">
+        <div class="container">
+          <h2 class="section-title">Shop by Category</h2>
+          <div class="categories-grid">
+            <div class="category-card" onclick="navigateToCategory('lehengas')">
+              <div class="category-icon">👗</div>
+              <h3>Lehengas</h3>
+              <p>Bridal & festive collections</p>
+            </div>
+            <div class="category-card" onclick="navigateToCategory('dupattas')">
+              <div class="category-icon">🧵</div>
+              <h3>Dupattas</h3>
+              <p>Perfect finishing touches</p>
+            </div>
+            <div class="category-card" onclick="navigateToCategory('jewellery')">
+              <div class="category-icon">💎</div>
+              <h3>Jewellery</h3>
+              <p>Traditional & affordable designs</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="lehengas" class="page category-page"></section>
+    <section id="dupattas" class="page category-page"></section>
+    <section id="jewellery" class="page category-page"></section>
+    <section id="productDetail" class="page product-detail-page"></section>
+    <section id="admin" class="page admin-page"></section>
+  </main>
+
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+      <h3>Shopping Bag</h3>
+      <button class="close-cart" id="closeCart">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems"></div>
+    <div class="cart-footer">
+      <div class="cart-total">
+        <span>Total:</span>
+        <span id="cartTotal">₹0</span>
+      </div>
+      <button class="btn-primary btn-checkout" id="checkoutBtn">Proceed to Checkout</button>
+    </div>
+  </div>
+
+  <div class="modal" id="checkoutModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Complete Your Order</h2>
+        <button class="modal-close" onclick="closeCheckoutModal()">✕</button>
+      </div>
+      <form id="checkoutForm" class="checkout-form">
+        <div class="form-group">
+          <label>Full Name *</label>
+          <input type="text" name="customer_name" required>
+        </div>
+        <div class="form-group">
+          <label>Phone Number *</label>
+          <input type="tel" name="phone" pattern="[0-9]{10}" required>
+        </div>
+        <div class="form-group">
+          <label>Delivery Address *</label>
+          <textarea name="address" rows="4" required></textarea>
+        </div>
+        <div class="order-summary">
+          <h3>Order Summary</h3>
+          <div id="checkoutItems"></div>
+          <div class="summary-total">
+            <span>Total Amount:</span>
+            <span id="checkoutTotal"></span>
+          </div>
+          <p class="payment-note">💰 Cash on Delivery / Store Pickup</p>
+        </div>
+        <button type="submit" class="btn-primary btn-full">Place Order</button>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal" id="successModal">
+    <div class="modal-content success-content">
+      <div class="success-icon">✓</div>
+      <h2>Order Placed Successfully!</h2>
+      <p>Thank you for your order. We'll contact you shortly to confirm.</p>
+      <button class="btn-primary" onclick="closeSuccessModal()">Continue Shopping</button>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
