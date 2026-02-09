@@ -54,7 +54,12 @@ app.use(session({
   secret: process.env.SESSION_SECRET || 'shree-shyam-secret-2026',
   resave: false,
   saveUninitialized: false,
-  cookie: { maxAge: 24 * 60 * 60 * 1000, secure: process.env.NODE_ENV === 'production' }
+  cookie: { 
+    maxAge: 24 * 60 * 60 * 1000,
+    secure: false,
+    httpOnly: true,
+    sameSite: 'lax'
+  }
 }));
 app.use(express.static('public'));
 
